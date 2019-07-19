@@ -63,6 +63,7 @@ Reshaping an array:
             iii) ndmin parameter for dimensions
 
 Reshaping an array using <arr>.shape
+-----------------------------------
     
     This function will reshape the original array.
     Syntax:
