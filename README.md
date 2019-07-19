@@ -46,6 +46,7 @@ Datatypes in numpy:
         complex128 - Complex number, represented by two 64-bit floats (real and imaginary components)
         
 <arr>.ndim:
+    
     This function will return the dimension of the numpy array.
 
     e.g:
@@ -55,11 +56,34 @@ Datatypes in numpy:
         print(b.ndim)				# 3
 
 Reshaping an array:
-    Reshaping an array can be done in two ways.
-        i) <arr>.shape=(dim,row,column)
-        ii) <arr>.reshape(dim,row,column)
-        iii) ndmin parameter for dimensions
 
+    Reshaping an array can be done in two ways.
+            i) <arr>.shape=(dim,row,column)
+            ii) <arr>.reshape(dim,row,column)
+            iii) ndmin parameter for dimensions
+
+Reshaping an array using <arr>.shape
+    
+    This function will reshape the original array.
+    Syntax:
+        <arr>.shape=(dimension, row, column)
+    e.g:
+     a=np.array([1,2,3,4,5,6,7,8,9])
+     a.shape=(3,3)
+     print(a)		# 3x3 2D array  
+     print (a.shape) # (3,3)
+
+    a=np.array([1,2,3,4,5,6,7,8,9])
+    a.shape=(1,3,3)
+    print(a)		# 1x3x3 3D array
+    print (a.shape) #(1,3,3)
+
+    a=np.array([1,2,3,4,5,6,7,8,9])
+    a.shape=(1,4,4)	# error since no of element is less for the given dimension
+    print(a)		 
+    print (a.shape) 
+
+    
 
 
 
