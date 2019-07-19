@@ -46,6 +46,7 @@ Datatypes in numpy:
         complex128 - Complex number, represented by two 64-bit floats (real and imaginary components)
         
 <arr>.ndim:
+-----------------------------------
     
     This function will return the dimension of the numpy array.
 
@@ -56,6 +57,7 @@ Datatypes in numpy:
         print(b.ndim)				# 3
 
 Reshaping an array:
+-----------------------------------
 
     Reshaping an array can be done in two ways.
             i) <arr>.shape=(dim,row,column)
