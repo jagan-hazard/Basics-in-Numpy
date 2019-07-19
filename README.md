@@ -74,20 +74,20 @@ Reshaping an array using <arr>.shape
         <arr>.shape=(dimension, row, column)
         
     e.g:
-     a=np.array([1,2,3,4,5,6,7,8,9])
-     a.shape=(3,3)
-     print(a)		# 3x3 2D array  
-     print (a.shape) # (3,3)
+         a=np.array([1,2,3,4,5,6,7,8,9])
+         a.shape=(3,3)
+         print(a)		# 3x3 2D array  
+         print (a.shape) # (3,3)
 
-    a=np.array([1,2,3,4,5,6,7,8,9])
-    a.shape=(1,3,3)
-    print(a)		# 1x3x3 3D array
-    print (a.shape) #(1,3,3)
+        a=np.array([1,2,3,4,5,6,7,8,9])
+        a.shape=(1,3,3)
+        print(a)		# 1x3x3 3D array
+        print (a.shape) #(1,3,3)
 
-    a=np.array([1,2,3,4,5,6,7,8,9])
-    a.shape=(1,4,4)	# error since no of element is less for the given dimension
-    print(a)		 
-    print (a.shape) 
+        a=np.array([1,2,3,4,5,6,7,8,9])
+        a.shape=(1,4,4)	# error since no of element is less for the given dimension
+        print(a)		 
+        print (a.shape) 
 
 Reshaping an array using <arr>.reshape()
 ------------------------------------------
