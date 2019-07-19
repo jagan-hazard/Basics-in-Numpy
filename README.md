@@ -121,6 +121,26 @@ Some numpy functions:
         - numpy.eye()
         - numpy.random.random()
 
+zeros():
+-------
+
+    For the given  dimension, this function will  generate the given dimensional array which filled with zeros.
+    
+    Syntax:
+        numpy.zeros((dimension, row, column))
+        
+    e.g:
+        a=np.zeros((2,2)) 		 #2D array
+        print(a)
+        print(a.shape)		# (2,2)  array of having all zero elements
+
+        a=np.zeros((3,4,4))  	#3D array
+        print(a)
+        print(a.shape)		# (3,4,4) array of having all zero elements
+
+        a=np.zeros((10,3,4))  	#10D array
+        print(a)
+        print(a.shape)		# (10,3,4) array of having all zero elements
 
 
 
