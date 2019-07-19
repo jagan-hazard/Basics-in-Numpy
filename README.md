@@ -21,6 +21,23 @@ Defining an array: (ndarray):
         print(a)
         print(a.shape)			# (3, 3, 2)  ---> (dimension,row,column)
 
+Datatypes in numpy:
+-------------------
+    Syntax:
+        dt=np.dtype(<type>)
+    Types:
+        bool_       Boolean (True or False)
+        int_         Default integer type (either int64 or int32)  
+        int8          Byte (-128 to 127)
+        int16        Integer (-32768 to 32767)
+        int32        Integer (-2147483648 to 2147483647)
+        int64        Integer (-9223372036854775808 to 9223372036854775807)
+        uint8       Unsigned integer (0 to 255)
+        uint16     Unsigned integer (0 to 65535)
+        uint32     Unsigned integer (0 to 4294967295)
+        uint64     Unsigned integer (0 to 18446744073709551615)
+
+
 
 
 
