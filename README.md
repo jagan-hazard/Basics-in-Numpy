@@ -706,5 +706,82 @@ Array Manipulations:
                 c=b.flatten()			# return 4th element from flattened array
                 print(c)				#  [ 0  1  2  3  4  5  6  7  8  9 10 11]
  
+    Dimension Representation:
+    -------------------------
+    ![Screenshot](dim_rep.png)
+    
+        II. Changing Dimension:
+        ----------------------
+              This function will change the dimension of the array.
 
+                  <arr>.broadcast()               	# Not needed (object based)
+                  <arr>.broadcast_to(array, shape, subok)	# Not needed
+                  <arr>.expand_dims(arr, axis)    #{similar to newaxis function}
+                  <arr>.squeeze(array, axis)
+            <arr>.expand_dims() :
+            ---------------------
+                This function will return a numpy array which is made by expanding a dimension in the given input array
+                by inserting a new axis at specified position. It means it will expand the dimension of the array or
+                add a dimension to the input array.
+                
+                Syntax
+                        np.expand_dims(arr, axis)
+                E.g:
+                        a=np.arange(4)
+                        b=a.reshape(2,2)			# 2D array
+                        print (b)			# [[0 1] [2 3]]
+                        print(b.shape)			# (2, 2)
+                        c=np.expand_dims(b,axis=0)  		# adding one dimension along axis 0
+                        print(c)			# [[[0 1] [2 3]]]
+                        print(c.shape)			# (1, 2, 2)
+
+                        c=np.expand_dims(b,axis=1)  		# adding one dimension along axis 1
+                        print(c)			# [[[0 1]] [[2 3]]]
+                        print(c.shape)			# (2, 1, 2)
+
+                        c=np.expand_dims(b,axis=2) 	 	# adding one dimension along axis 2
+                        print(c)			# [[[0] [1]]   [[2] [3]]]
+                        print(c.shape)			# (2, 2, 1)
+                        
+               <arr>.squeeze():
+               ----------------
+                    This function will removes one-dimensional entry from the input array based on given axis
+                    (given axis size must be equal 1). It is an opposite to the expand_dims().
+                    
+                    Syntax
+                            np.squeeze(arr, axis)
+                            
+                     E.g:
+                            a=np.arange(4)
+                            b=a.reshape(1,2,2)			# 3D array
+                            print (b)				# [[[0 1]  [2 3]]]
+
+                            c=np.squeeze(b,axis=0)  			# removing one dimension along axis 0 (convert 3D to 2D)
+                            print(c)				# [[0 1] [2 3]]
+                            print(c.shape)				# (2, 2)
+
+                            b=a.reshape(2,1,2)			# 3D array
+                            c=np.squeeze(b,axis=1)  			# removing one dimension along axis 1
+                            print(c)				# [[0 1] [2 3]]
+                            print(c.shape)				# (2, 2)
+
+                            b=a.reshape(2,2,1)			# 3D array
+                            c=np.squeeze(b,axis=2)  			# removing one dimension along axis 2
+                            print(c)				# [[0 1] [2 3]]
+                            print(c.shape)				# (2, 2)
+
+
+        III. Transpose Operation:
+        -------------------------
+              This function will perform transpose operation.
+                      np.transpose(<arr>, axes)
+                      <arr>.T	                              # same as np.transpose()
+                      np.rollaxis(arr, axis, start) 	
+                      np.swapaxes(array, axis1,axis2)
+
+
+
+
+
+        
 
