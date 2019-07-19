@@ -753,22 +753,22 @@ Array Manipulations:
                             
                      E.g:
                             a=np.arange(4)
-                            b=a.reshape(1,2,2)			# 3D array
+                            b=a.reshape(1,2,2)		# 3D array
                             print (b)				# [[[0 1]  [2 3]]]
 
-                            c=np.squeeze(b,axis=0)  			# removing one dimension along axis 0 (convert 3D to 2D)
+                            c=np.squeeze(b,axis=0)  # removing one dimension along axis 0 (convert 3D to 2D)
                             print(c)				# [[0 1] [2 3]]
-                            print(c.shape)				# (2, 2)
+                            print(c.shape)			# (2, 2)
 
-                            b=a.reshape(2,1,2)			# 3D array
-                            c=np.squeeze(b,axis=1)  			# removing one dimension along axis 1
+                            b=a.reshape(2,1,2)		# 3D array
+                            c=np.squeeze(b,axis=1)  # removing one dimension along axis 1
                             print(c)				# [[0 1] [2 3]]
-                            print(c.shape)				# (2, 2)
+                            print(c.shape)			# (2, 2)
 
-                            b=a.reshape(2,2,1)			# 3D array
-                            c=np.squeeze(b,axis=2)  			# removing one dimension along axis 2
+                            b=a.reshape(2,2,1)		# 3D array
+                            c=np.squeeze(b,axis=2)  # removing one dimension along axis 2
                             print(c)				# [[0 1] [2 3]]
-                            print(c.shape)				# (2, 2)
+                            print(c.shape)			# (2, 2)
 
 
         III. Transpose Operation:
@@ -778,6 +778,304 @@ Array Manipulations:
                       <arr>.T	                              # same as np.transpose()
                       np.rollaxis(arr, axis, start) 	
                       np.swapaxes(array, axis1,axis2)
+
+            np.transpose(<arr>, axes):
+            --------------------------
+                     This function will transpose operation.
+                     
+                     Syntax:
+                          np.transpose(<arr>, axes)
+                          
+                     E.g:
+                       """ For 2D array"""
+                       -----------------
+                            a=np.arange(6)
+                            b=a.reshape(3,2)				# 2D array
+                            print(b)					# [[0 1]  [2 3]  [4 5]]
+                            print(b.shape)				# (3, 2)
+                            c=np.transpose(b)
+                            print(c)					# [[0 2 4] [1 3 5]]
+                            print(c.shape)				# (2, 3)
+
+                        """ For 3D array of same dimension"""
+                        --------------------------------------
+                            a=np.arange(18)
+                            b=a.reshape(2,3,3)   	# 3D array
+                            print(b)		# [[[ 0  1  2] [ 3  4  5] [ 6  7  8]]    [[ 9 10 11] [12 13 14] [15 16 17]]]
+                            print(b.shape)	# (2, 3, 3)
+                            c=np.transpose(b)				
+                            print(c)		#  [[[ 0  9] [ 3 12] [ 6 15]]   [[ 1 10] [ 4 13] [ 7 16]]   [[ 2 11] [ 5 14] [ 8 17]]]
+                            print(c.shape)	# (3, 3, 2)
+
+                        """ For 3D array of different dimension"""
+                        ------------------------------------------
+                            a=np.arange(24)
+                            b=a.reshape(2,3,4)	# 3D array
+                            print(b)	# [[[ 0  1  2  3] [ 4  5  6  7] [ 8  9 10 11]]   [[12 13 14 15] [16 17 18 19] [20 21 22 23]]]
+                            print(b.shape)	# (2, 3, 4)
+                            c=np.transpose(b)				
+                            print(c)	# [[[0 12][ 4 16][ 8 20]]  [[1 13][5 17][9 21]] [[2 14][6 18][10 22]][[3 15][7 19][11 23]]]
+                            print(c.shape)	# (4, 3, 2)
+            
+            np.rollaxis(<arr>, axis,start):
+            -------------------------------
+
+                     This function will roles the specified axis backwards, until it lies in specified position.
+                     
+                     It shifts the given axis towards left until it reaches start axis.
+                     
+                     Syntax:
+                          np.rollaxis (<arr>, axis, start=0)
+                          
+                     E.g:
+                        """2D array """
+                        -----------------
+                            a=np.ones((3,2))				# 2D array
+                            print(np.rollaxis(a,1).shape)			# (2, 3)
+
+                        """nD array"""
+                        ---------------
+                            a = np.ones((3,4,5,6))				# 4D array
+                            print(a.shape)				# (3, 4, 5, 6)
+                            print(a.ndim)				# 4
+                            print(np.rollaxis(a, 3, 1).shape)			# (3, 6, 4, 5)
+                            print(np.rollaxis(a, 2).shape)			# (5, 3, 4, 6)
+                            print(np.rollaxis(a, 1, 4).shape)			# (3, 5, 6, 4)
+
+        np.swapaxes(<arr>, axis1,axis2):
+        --------------------------------
+                  This function will roles the specified axis backwards, until it lies in specified position.
+                 It shifts the given axis towards left until it reaches start axis.
+                 Syntax:
+                      np.swapaxes (<arr>, axis1, axis2)
+                 E.g:
+                    """2D array """
+                    -----------------
+                        a=np.ones((3,2))				# 2D array
+                        print(np.swapaxes(a,1,0).shape)			# (2, 3)
+
+                    ""“3D array""“
+                    -----------------
+                        a = np.ones((2,3,4))				# 3D array
+                        print(a.shape)				# (2, 3, 4)
+                        print(a.ndim)				# 3
+                        print(np.swapaxes(a, 2, 0).shape)			# (4, 3, 2)
+                        print(np.swapaxes(a, 1, 2).shape)			# (2, 4, 3)
+
+    IV. Joining Arrays:
+    -------------------
+          There are four functions available for concatenation. They are,
+
+                np.concatenate((<arr1>,<arr2>,..<arr n>),axis=0)
+                np.stack((<arr1>,<arr2>,..,<arr n>),axis=0)
+                np.dstack((<arr1>,<arr2>,..,<arr n>))
+                np.hstack((<arr1>,<arr2>,..,<arr n>))
+                np.vstack((<arr1>,<arr2>,..,<arr n>))
+        
+        np.concatenate((<arr1>,<arr2>,..<arr n>),axis=0):
+            -------------------------------------------------
+             This function will join two or more numpy array along a specified axis and the arrays must be same shape.
+             Broadcasting concepts is not applicable here.
+             Syntax:
+                np.concatenate((<arr1>,<arr2>,..<arr n>),axis=0)
+             E.g: 
+             """2D array """
+             ---------------
+                    a=np.ones((3,2))					# 2D array
+                    print("a array shape=",a.shape)				# (3, 2)
+                    b=np.ones((3,2))					# 2D array
+                    print("b array shape=",b.shape)				# (3, 2)
+                    print(np.concatenate((a,b),axis=0))			
+                    print(np.concatenate((a,b),axis=0).shape)			# (6, 2)
+                    print(np.concatenate((a,b),axis=1))			
+                    print(np.concatenate((a,b),axis=1).shape)			# (3, 4)
+            """3D array""“
+            ---------------
+                    a = np.ones((2,3,4))				# 3D array
+                    print("a array shape=",a.shape)			# (2, 3, 4) 
+                    b = np.ones((2,3,4))				# 3D array
+                    print("b array shape=",b.shape)			# (2, 3, 4)
+                    print(np.concatenate((a,b)))			
+                    print(np.concatenate((a,b)).shape)			# (4, 3, 4)
+
+                    print(np.concatenate((a,b),axis=1))			
+                    print(np.concatenate((a,b),axis=1).shape)		# (2, 6, 4)
+                    print(np.concatenate((a,b),axis=2))			
+                    print(np.concatenate((a,b),axis=2).shape)		# (2, 3, 8)
+
+        np.stack((<arr1>,<arr2>,..<arr n>),axis=0):
+        --------------------------------------------
+             This function will stack two or more numpy array along a specified axis and the arrays must be same shape. 
+             This function will increase the dimension when performed.
+             Broadcasting concepts is not applicable here.
+             Syntax:
+                np.stack((<arr1>,<arr2>,..<arr n>),axis=0)
+             E.g: 
+            """2D array ""“
+            ---------------
+                a=np.arange(6)	
+                a.shape=(3,2)
+                print("a array shape=",a.shape)		# (3, 2)
+                b=np.arange(6,12)						# 2D array
+                b.shape=(3,2)
+                print("b array shape=",b.shape)		# (3, 2)
+                print(np.stack((a,b),axis=0))			
+                print(np.stack((a,b),axis=0).shape)	# (2, 3, 2)
+                print(np.stack((a,b),axis=1))			
+                print(np.stack((a,b),axis=1).shape)	# ((3, 2, 2)
+
+             """3D array"""
+             ---------------
+                a = np.arange(12)				# 3D array
+                a.shape=(2,3,2)
+                print("a array shape=",a.shape)			# (2, 3, 4) 
+                b = np.arange(12,24)				# 3D array
+                b.shape=(2,3,2)
+                print("b array shape=",b.shape)			# (2, 3, 4)
+                print(np.stack((a,b),axis=0))			
+                print(np.stack((a,b),axis=0).shape)		# (2, 2, 3, 2) 
+                print(np.stack((a,b),axis=1))			
+                print(np.stack((a,b),axis=1).shape)		# (2, 2, 3, 2)
+                print(np.stack((a,b),axis=2))			
+                print(np.stack((a,b),axis=2).shape)		# (2, 3, 2, 2)
+
+
+        np.dstack((<arr1>,<arr2>,..<arr n>)):
+        -------------------------------------
+             This function is a variant of stack() but it stacks along third axis. 
+             This function makes most sense for arrays with up to 3 dimensions. For instance, for pixel-data with a height 
+             (first axis), width (second axis), and r/g/b channels (third axis).
+             Syntax:
+                    np.vstack((<arr1>,<arr2>,..<arr n>))
+             E.g: 
+              """2D array ""“
+              ---------------
+                    a=np.arange(6)	
+                    a.shape=(3,2)
+                    b=np.arange(6,12)				# 2D array
+                    b.shape=(3,2)
+                    print(np.dstack((a,b)))				# [[[ 0  6]
+                                        #   [ 1  7]]
+                                        #  [[ 2  8]
+                                        #    [ 3  9]]
+                                        #  [[ 4 10]
+                                        #    [ 5 11]]]
+                    print(np.dstack((a,b)).shape)		# (3, 2, 2)
+
+        
+        np.hstack((<arr1>,<arr2>,..<arr n>)):
+        -------------------------------------
+             This function is a variant of stack() but it stacks along horizontal axis alone. 
+             Broadcasting concepts is not applicable here.
+             Syntax:
+	                np.hstack((<arr1>,<arr2>,..<arr n>))
+             E.g: 
+                """2D array ""“
+                ---------------
+                    a=np.arange(6)	
+                    a.shape=(3,2)
+                    print("a array shape=",a.shape)		# (3, 2)
+                    b=np.arange(6,12)			# 2D array
+                    b.shape=(3,2)
+                    print("b array shape=",b.shape)		# (3, 2)
+                    print(np.hstack((a,b)))			
+                    print(np.hstack((a,b)).shape)		# (3, 4)
+
+                ""“3D array ""“
+                ----------------
+                    a = np.arange(12)				# 3D array
+                    a.shape=(2,3,2)
+                    print("a array shape=",a.shape)			# (2, 3, 2) 
+                    b = np.arange(12,24)				# 3D array
+                    b.shape=(2,3,2)
+                    print("b array shape=",b.shape)			# (2, 3, 2)
+                    print(np.hstack((a,b)))			
+                    print(np.hstack((a,b)).shape)			# (2, 6, 2)
+
+        
+        np.vstack((<arr1>,<arr2>,..<arr n>)):
+        -------------------------------------
+             This function is a variant of stack() but it stacks along vertical axis alone. 
+             Broadcasting concepts is not applicable here.
+             Syntax:
+                    np.vstack((<arr1>,<arr2>,..<arr n>))
+             E.g: 
+               """2D array ""“
+               ----------------
+                    a=np.arange(6)	
+                    a.shape=(3,2)
+                    print("a array shape=",a.shape)		# (3, 2)
+                    b=np.arange(6,12)			# 2D array
+                    b.shape=(3,2)
+                    print("b array shape=",b.shape)		# (3, 2)
+                    print(np.vstack((a,b)))			
+                    print(np.vstack((a,b)).shape)		# (6, 2)
+                ""“3D array ""“
+                ----------------
+                    a = np.arange(12)				# 3D array
+                    a.shape=(2,3,2)
+                    print(a)
+                    print("a array shape=",a.shape)			# (2, 3, 2) 
+                    b = np.arange(12,24)				# 3D array
+                    b.shape=(2,3,2)
+                    print("b array shape=",b.shape)			# (2, 3, 2)
+                    print(np.vstack((a,b)))			
+                    print(np.vstack((a,b)).shape)			# (4, 3, 2)
+
+        
+    V. Splitting Arrays:
+    --------------------
+        There three functions available for splitting the numpy array. They are,
+            np.split()
+            np.dsplit()
+            np.hsplit()
+            np.vsplit()
+            
+       np.split():
+       -----------
+         This function will split the given input array a python list as per the size along the given axis.
+         Syntax:
+            np.split(arr, <size>, axis=0)	
+        e.g:
+            a=np.arange(25)	
+            a.shape=(5,5)
+            print(a)
+            print("a array shape=",a.shape)		# (3, 2)
+            print(np.split(a,5,axis=0))			
+            print(len(np.split(a,5,axis=0)))		# 5
+            print(np.split(a,5,axis=1))			
+            print(len(np.split(a,5,axis=1)))		# 5
+
+
+       np.hsplit():
+       ------------
+         This function will split the given input array a python list as per the size in horizontal axis (always axis=0).
+         Syntax:
+            np.hsplit(arr, <size>, axis=0) 	
+        e.g:
+            a=np.arange(25)	
+            a=a.reshape(5,5)
+            print(a)
+            print("a array shape=",a.shape)		# (5, 5)
+            print(np.hsplit(a,5))			
+            print(len(np.hsplit(a,5)))			# 5
+
+       
+       np.vsplit():
+       ------------
+         This function will split the given input array a python list as per the size in horizontal axis (always axis=1).
+         Syntax:
+                np.vsplit(arr, <size>, axis=0) 	
+        e.g:
+            a=np.arange(25)	
+            a=a.reshape(5,5)
+            print(a)
+            print("a array shape=",a.shape)		# (5, 5)
+            print(np.vsplit(a,5))			
+            print(len(np.vsplit(a,5)))			# 5
+
+
+
 
 
 
