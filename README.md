@@ -37,6 +37,29 @@ Datatypes in numpy:
         uint16    - Unsigned integer (0 to 65535)
         uint32    - Unsigned integer (0 to 4294967295)
         uint64    - Unsigned integer (0 to 18446744073709551615)
+        float_    - Shorthand for float64
+        float16   - Half precision float: sign bit, 5 bits exponent, 10 bits mantissa
+        float32   - Single precision float: sign bit, 8 bits exponent, 23 bits mantissa
+        float64   - Double precision float: sign bit, 11 bits exponent, 52 bits mantissa 
+        complex_  - Shorthand for complex128
+        complex64 - Complex number, represented by two 32-bit floats (real and imaginary components)
+        complex128 - Complex number, represented by two 64-bit floats (real and imaginary components)
+        
+<arr>.ndim:
+    This function will return the dimension of the numpy array.
+
+    e.g:
+        a=np.arange(1200)			# will create random 1200  1D elements
+        b=a.reshape(3,20,20)		# depth=3, height=20, width=20
+        print(b.shape)				# (3,20,20)
+        print(b.ndim)				# 3
+
+Reshaping an array:
+    Reshaping an array can be done in two ways.
+        i) <arr>.shape=(dim,row,column)
+        ii) <arr>.reshape(dim,row,column)
+        iii) ndmin parameter for dimensions
+
 
 
 
