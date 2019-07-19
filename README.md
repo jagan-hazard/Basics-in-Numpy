@@ -708,7 +708,7 @@ Array Manipulations:
  
     Dimension Representation:
     -------------------------
-    ![Screenshot](dim_rep.jpg)
+    ![Screenshot](dim_rep.png)
     
         II. Changing Dimension:
         ----------------------
