@@ -26,6 +26,7 @@ Datatypes in numpy:
 -------------------
     Syntax:
         dt=np.dtype(<type>)
+        
     Types:
         bool_     - Boolean (True or False)
         int_      - Default integer type (either int64 or int32)  
@@ -68,8 +69,10 @@ Reshaping an array using <arr>.shape
 -----------------------------------
     
     This function will reshape the original array.
+    
     Syntax:
         <arr>.shape=(dimension, row, column)
+        
     e.g:
      a=np.array([1,2,3,4,5,6,7,8,9])
      a.shape=(3,3)
@@ -86,7 +89,40 @@ Reshaping an array using <arr>.shape
     print(a)		 
     print (a.shape) 
 
+Reshaping an array using <arr>.reshape()
+------------------------------------------
+
+    This function will return the reshaped array as new array.
     
+    Syntax:
+        <arr>.reshape(dimension, row, column)
+        
+    e.g:
+        a=np.array([1,2,3,4,5,6,7,8,9])
+        b=a.reshape(3,3)
+        print(b)		# 3x3 2D array  
+        print (b.shape) # (3,3)
+
+        c=a.reshape(1,3,3)
+        print(c)		# 1x3x3 3D array
+        print (c.shape) #(1,3,3)
+
+        d=a.reshape(1,4,4)	# error since no of element is less for the given dimension
+        print(d)		 
+        print (d.shape) 
+        
+Some numpy functions:
+----------------------
+
+    NumPy has some useful function to generate the n dimensional arrays. They are,
+        - numpy.zeros()
+        - numpy.ones()
+        - numpy.full()
+        - numpy.eye()
+        - numpy.random.random()
+
+
+
 
 
 
