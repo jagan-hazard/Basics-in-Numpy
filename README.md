@@ -141,7 +141,121 @@ zeros():
         a=np.zeros((10,3,4))  	#10D array
         print(a)
         print(a.shape)		# (10,3,4) array of having all zero elements
+        
+ones():
+--------
 
+    For the given  dimension, this function will  generate the given dimensional array which filled with ones.
+    
+    Syntax:
+        numpy.ones((dimension, row, column))
+        
+    e.g:
+        a=np.ones((2,2))  	#2D array
+        print(a)
+        print(a.shape)		# (2,2)  array of having all zero elements
+
+        a=np.ones((3,4,4))  	#3D array
+        print(a)
+        print(a.shape)		# (3,4,4) array of having all zero elements
+
+        a=np.ones((10,3,4))  	#10D array
+        print(a)
+        print(a.shape)		# (10,3,4) array of having all zero elements
+
+full():
+---------
+    For the given  dimension, this function will  generate the given dimensional array which filled with single value passed a argument.
+    
+    Syntax:
+        numpy.full((dimension, row, column),value)
+        
+    e.g:
+        a=np.full((2,2),5)  	#2D array
+        print(a)
+        print(a.shape)		# (2,2)  array of having all elements value as 5
+
+        a=np.full((3,4,4),5)  	#3D array
+        print(a)
+        print(a.shape)		# (3,4,4) array of having all elements value as 5
+
+        a=np.full((10,3,4),5)  	#10D array
+        print(a)
+        print(a.shape)		# (10,3,4) array of having all elements value as 5
+
+
+eye()
+------
+
+    For the given  dimension, this function will  generate the given dimensional identity array.
+    
+    Syntax:
+           numpy.eye(row, column)       or        numpy.eye(identity matrix size)
+           
+    e.g:
+        a=np.eye(2)  	# 2D array
+        print(a)
+        print(a.shape)	# (2,2)  identity matrix 
+
+        a=np.eye(4,4)  	# 2D array since 4x4 can create identity matrix, it will create identity matrix
+        print(a)
+        print(a.shape)	# (3,4) identity matrix
+
+        a=np.eye(3,4)  	# 2D array since 3x4 can't create identity matrix, it will append zero in 4th 			column 
+        print(a)		# (3,3) will be identy matrix and 4th row is zeros
+        print(a.shape)	# (3,4) array 
+
+random.random():
+----------------
+
+    For the given  dimension, this function will  generate the given dimensional array with random values.
+    
+    Syntax:
+           numpy.random.random(dimension, row, column)
+           
+    e.g:
+        a=np.random.random(2)  	    # 2D array
+        print(a)
+        print(a.shape)		     # (2,2)  identity matrix 
+
+        a=np.random.random((4,4))    # 2D array since 4x4 can create identity matrix, it will create identity matrix
+        print(a)
+        print(a.shape)		    # (3,4) identity matrix
+
+    	import cv2
+        a=(np.random.random((600,600))*100)  	# (2channel image)
+        print(a)
+        print(a.shape)				# (600, 600)  ---> (row,column)
+        cv2.imshow("img",a)  						
+        cv2.waitKey(0)
+
+        a=(np.random.random((88,256,3))*100)       	# the formating is changed in order for cv2 (3 channel image)
+        print(a)
+        print(a.shape)				# (88,256,3) array
+        cv2.imshow("img",a)  						
+        cv2.waitKey(0)
+
+Numpy text formatting options
+-------------------------------
+
+       np.set_printoptions(<precision>,<linewidth>,<suppress>,<formatter>)    # Set printing options.
+       np.get_printoptions()					 # get current printing options.
+
+
+        Ex:
+        np.set_printoptions(precision=4, suppress=True)
+
+         Note: Suppress, if set True, will eliminate scientific notation.
+                          if set False, will include scientific notation (Default). 
+
+Array creation from existing data types:
+----------------------------------------
+
+    The NumPy arrays are made from the excisting datas such as datatypes such as list, list of tuples, tuples, tuple of tuples or tuple of lists, iterables, strings.
+    The functions available for this are,
+       - asarray()
+       - frombuffer()
+       - fromiter()
 
 
 
