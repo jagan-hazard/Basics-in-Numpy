@@ -257,6 +257,191 @@ Array creation from existing data types:
        - frombuffer()
        - fromiter()
 
+asarray():
+----------
+
+    This function will create numpy array from the excisting datatypes such as list, list of tuples, tuples, tuple of tuples or tuple of lists.
+    
+    Syntax:
+        numpy.asarray(input data, dtype=None, order=None)
+        
+    e.g:
+        a=[1,2,3,4,5,6,7,8]
+        print(type(a))     		 # <class 'list’>
+
+        b=np.asarray(a)
+        Print (b)			# [1,2,3,4,5,6,7,8]
+        print(type(b))			# <class 'numpy.ndarray’>
+
+        c=np.asarray(a,dtype=complex)
+        print(c)			# [1.+0.j 2.+0.j 3.+0.j 4.+0.j 5.+0.j 6.+0.j 7.+0.j 8.+0.j]
+        print(type(c))			# <class 'numpy.ndarray'>
+
+frombuffer():
+--------------
+
+    This function will create numpy array from the the buffer. It interprets buffer as one-dimensional array.
+    
+    Syntax:
+        numpy.frombuffer(buffer, dtype=None,count=-1,offset=0)
+
+    Where
+        Buffer  - any object that has buffer
+        dtype  - data type
+        Count  - number of items to read, -1 means all.
+        Offset  - starting position to read.
+    e.g:
+        a='python programming’		# not working
+        b=np.frombuffer(a,dtype='S1')
+        print(b)
+        print(type(b))
+
+fromiter()
+----------
+    This function will create numpy array from the iterables. 
+    
+    Syntax:
+    numpy.frombuffer(iterable, dtype=None, count=-1)
+
+    e.g:
+        i=range(10)
+        a=np.fromiter(i,dtype=float)
+        print(a)			# [0. 1. 2. 3. 4. 5. 6. 7. 8. 9.]
+        print(type(a))			# <class 'numpy.ndarray'>
+
+Array creation from the range:
+-------------------------------
+
+    Numpy provide certain functions for creating numpy array from the given range. 
+
+    These functions are,
+        numpy.arange()
+        numpy.linspace()
+        numpy.logspace()
+
+arange():
+-----------
+    This function will create numpy array from the given range having start, stop and step values. 
+    This array will be having evenly space values.
+    
+    Syntax:
+        numpy.arange(start, stop, step, dtype=None)
+
+    e.g:
+        a=np.arange(1,20,2)	# 1D array
+        print(a)			# [ 1  3  5  7  9 11 13 15 17 19]
+        print(a.shape)		# (10,) 
+
+linspace()
+----------
+    This function will create numpy array from the given range having start, stop and num values. 
+    In this function, instead of step size, the number of evenly spaced values between the interval is specified.
+    Syntax:
+        numpy.linspace(start,stop,num=50,endpoint,retstep, dtype=None)
+
+    e.g:
+        a = np.linspace(1,2)    # within 1 to 2, it should generate default number of values 	(num=50).
+        print (a)				# [1. , 1.02040816, . . . , 1.97959184, 2.]
+        print (len(a))			#  50 
+
+        a = np.linspace(1,2,5)  # within 1 to 2, it should generate 5 evenly spaced values.
+        print (a)				# [1.   1.25 1.5  1.75 2.  ]
+        print (len(a))			#  5
+        
+logspace():
+-----------
+    This function will create numpy array from the given range having start, stop and num values. 
+    
+    In this function, num means numbers that are evenly spaced on a log scale.
+    
+    Syntax:
+        numpy.logspace(start,stop,num=50,endpoint,base=10, dtype=None)
+
+    where
+        Base  - base scale of log system (default=10)
+    e.g:
+        a = np.logspace(1,2)    # within 1 to 2, it should generate evenly spaced log values, default number of values (num=50).
+        print (a)	          # [ 10., 10.48113134, . . . ,  95.40954763, 100.]
+        print (len(a))	          #  50 
+
+        a = np.logspace(1,2,5)   # within 1 to 2, it should generate evenly spaced log values, number of values here num=5.
+        print (a)                 	# [ 10.          17.7827941   31.6227766   56.23413252 100.        ]
+        print (len(a))		#  5
+
+
+Arrary: Indexing and Slicing :
+------------------------------
+    Indexing and Slicing an array in NumPy is similar to indexing and slicing the python array.
+    
+    In python we have two type of indexing,
+        - Positive indexing starts from left to right with 0,1,2,3,... 
+        - Negative indexing starts from right to left with -1,-2,-3,... 
+
+    Syntax for python slicing:
+             <list_name>[start_index:end_index:step_size]
+
+    For Numpy, slicing we need to add/edit the slicing based on the dimension of the array.
+
+    There are various types of slicing available in numpy. They are,
+        - Typical slicing,
+        - use of ellipses,
+        - Integer Indexing,
+        - multidimensional slicing
+
+   I. Typical Slicing:
+   
+        a=np.arange(0,101,10)	# 1D array
+        print (a)				# [ 0 10 20 30 40 50 60 70 80 90 100]
+        out=a[5:]				
+        print(out)				# [50 60 70 80 90 100]
+   II.Ellipses (…):
+   
+        - It works fine for 1D arrays.
+        a=np.array([np.arange(0,50,10),np.arange(50,100,10)])   #1D array
+        print (a)		#[[ 0 10 20 30 40]
+                        #[50 60 70 80 90]]
+        print(a.shape)	# (2,5)
+        b=a[...,1:3]	# column number 1 and 2 alone 
+        print(b)		#[[10 20][60 70]]
+        print(b.shape)	#(2,2)
+        b=a[1,...]	    # second row alone
+        print(b)		#[50 60 70 80 90]
+        print(b.shape)	#(5,)
+   III. Integer Indexing  
+   
+        a=np.array([np.arange(0,50,10),np.arange(50,100,10)])   #2D array
+        print (a)			# [[ 0 10 20 30 40]
+                            # [50 60 70 80 90]]
+        print (a.shape)		#   (2, 5)
+
+        b=a[[0,1],[0,4]]	#  zeroth row and zero element,first row fourth element 
+                            # (number of elemen in each row and column should be same)	
+        print(b)				# [ 0 90] 
+        
+        c=a[[0,1,0],[0,4,2]]
+        print(c)				# [ 0 90 20]
+   IV. multidimension array slicing
+   
+        a=np.array([[np.arange(0,50,10),np.arange(50,100,10)],[np.arange(50,75,5),np.arange(0,25,5)]]) #2D array
+        print (a)			# [[[ 0 10 20 30 40]
+                            #  [50 60 70 80 90]]
+                            #  [[50 55 60 65 70]
+                            #   [ 0 10 20 30 40]]]		
+        print (a.shape)		#  (2, 2, 5)
+
+        #slicing the first row of each dimension
+        b=a[:,:1,:]			
+        print(b)			# [[[ 0 10 20 30 40]]
+                            # [[50 55 60 65 70]]]
+        print(b.shape)		# (2,1,5)
+
+        #slicing the first element in the second row of each dimension
+        c=a[:,0,:2]
+        print (c)			# [[ 0 10]
+                            # [50 55]]
+        print (c.shape)		# (2, 1)
+
+
 
 
 
