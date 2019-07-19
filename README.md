@@ -420,6 +420,7 @@ Arrary: Indexing and Slicing :
         
         c=a[[0,1,0],[0,4,2]]
         print(c)				# [ 0 90 20]
+        
    IV. multidimension array slicing
    
         a=np.array([[np.arange(0,50,10),np.arange(50,100,10)],[np.arange(50,75,5),np.arange(0,25,5)]]) #2D array
@@ -441,12 +442,269 @@ Arrary: Indexing and Slicing :
                             # [50 55]]
         print (c.shape)		# (2, 1)
 
+Broadcasting:
+-------------
+    In normal way, it is not possible to perform element to element wise operations between the two array of different size.
+    Broadcasting is the process of the performing element to element wise operations between the two array of different size.
+    It includes arithmetic operations such as, 
+        -   Addition
+        -   Subtraction
+        -  Multiplication
+        -  Division
+    Broadcasting is possible if the two arrays have any of the below criteria’s,
+        -  Two arrays having same dimensions. (arr1=mxm, arr2=mxm)
+        -  one array having any dimension while other having 1x1 individual element. (arr1=mxm, arr2=1x1)
+        -  Row of one array must match with another array.(arr1=mxm/mxn, arr2=mx1)
+        -  Column of one array must match with another array.(arr1=mxn/pxn, arr2=1xn)
+    *where m,n,p are different numbers.
+    Note: Incase of Dimensions, it must be same for both arrays.
+
+Broadcasting Representation:
+----------------------------
+![Screenshot](broadcasting_rep.png)
+
+Broadcasting Examples using Addition:
+-------------------------------------
+
+    1x1 addition:
+    ------------
+        a=np.ones((5,5))				# equal 2D dimesnion
+        a=np.ones((4,5))				# different 2D dimension
+        print(a)
+        b=3 							# we can directly assing single element
+        b=np.array([3])					# else make 1x1 numpy array
+        out=a+b   						
+        print(out)
 
 
+        a=np.ones((3,5,5))				# equal 3D dimesnion
+        a=np.ones((3,4,5))				# different 3D dimension
+        print(a)
+        b=3 							# we can directly assing single element
+        b=np.array([3])					# else make 1x1 numpy array
+        out=a+b   						
+        print(out)
+
+    Arr1=mxn/mxm and Arr2=mx1
+    """Arr1=mxn/mxm and Arr2=mx1 in 2D array"""
+    --------------------------------------------
+        #a=np.ones((5,5))				# equal 2D dimension
+        a=np.ones((5,3))				# different 2D dimension
+        b=np.ones((5,1))				# different 2D dimension
+        out=a+b   							
+        print(out)
+        print(out.shape)				# 
+
+    """Arr1=mxn/mxm and Arr2=mx1 in 3D array"""
+    --------------------------------------------
+        #a=np.ones((3,5,5))				# equal 3D dimension
+        a=np.ones((3,5,3))				# different 3D dimension
+        b=np.ones((3,5,1))				# must be in 3D array
+        out=a+b   							
+        print(out)
+        print(out.shape)				# 
+
+    Arr1=mxn/pxn and Arr2=1xn
+    """Arr1=mxn/mxm and Arr2=mx1 in 2D array"""
+    --------------------------------------------
+        #a=np.ones((5,5))				# equal 2D dimension
+        a=np.ones((5,3))				# different 2D dimension
+        b=np.ones((5,1))				# different 2D dimension
+        out=a+b   							
+        print(out)
+        print(out.shape)				# 
+
+    """Arr1=mxn/mxm and Arr2=mx1 in 3D array"""
+    -------------------------------------------
+        #a=np.ones((3,5,5))				# equal 3D dimension
+        a=np.ones((3,5,3))				# different 3D dimension
+        b=np.ones((3,5,1))				# must be in 3D array
+        out=a+b   							
+        print(out)
+        print(out.shape)				# 
+
+Numpy Indexing functions:
+-------------------------
+
+        np.nonzero(<array>)   		#Return the indices of the elements that are non-zero
+        np.where(condition,<True op>,<False op>)   # perform operation based on condition and return it as array
+        np. take(<array>,<indices>/<axis>)  # Take values from the input array by matching 1d index and data slice
+        np.place(<array>,<condition>,<values>) # Change elements of an array based on conditional and input values
+        np.put(<array>,<index>,<values>)   # Replaces specified elements of an array with given values based on index
+        np.nditer(<array>)  		 # Efficient Ndarray elementwise iterator
+        np.ndenumerate(<array>)  	 # Efficient Ndarray index, element iterator
+        np.ndindex(<shape>)        	 # Efficient Ndarray index iterator, given the shape of array
+       
+Iteration Function:
+-------------------
+    This function will iterate each element through each row by row and dimension by dimension. 
+
+    It is memory/address dependent.
+
+    Syntax:
+        np.nditer(arr1, order, flags)
+
+    -  Order will work irrespective of whether the array is modified or not. It will take the modified array. Order can be C type or F type. 
+    order=‘C’           iterate via each element in row by row manner not via each row in available 		              dimension (default one).
+    order=‘F’           iterate via each element in column by column manner through each dimension
+             - Flags will instruct the iterator loop as per the flag.
 
 
+Numpy Iterator example:
+-----------------------
+
+    arr1=np.array([1,4,7,2,5,8,3,6,9])
+
+    for i in np.nditer(arr1):
+        print(i)		
+
+    for index,value in np.ndenumerate(arr1):
+        print(index,value)
+
+    for index in np.ndindex(3,2,1):
+        print(index)
+
+    "Iterations over 2D array"
+    --------------------------
+        a=np.arange(4)
+        b=a.reshape(2,2)
+        print(b)
+        for i in np.nditer(b,order='C'):
+            print(i,"\n")
+
+    "Iterations over 3D array having same height and width"
+    -------------------------------------------------------
+        a=np.arange(12)
+        b=a.reshape(3,2,2)
+        print(b)
+        for i in np.nditer(b,order=‘F’):
+            print(i,"\n")
+
+    "Iterations over 3D array having different height and width"
+    ------------------------------------------------------------
+        a=np.arange(18)
+        b=a.reshape(3,2,3)
+        print(b)
+        for i in np.nditer(b,order='C'):
+            print(i,"\n")
 
 
+Numpy Logic functions:
+---------------------- 
+    np.isnan(<element/array>)  # check for nan
+    np.isreal(<element/array>)  # check for real number
+    np.array_equal(<array1>, <array2>) # True if two arrays have the same shape and elements, False otherwise
+    np.array_equiv(<array1>, <array2>) #Returns True if input arrays are shape consistent and all elements equal
+    np.greater (<array1>, <array2>)  # Return the truth value of (x1 > x2) element-wise
+    np.greater_equal (<array1>, <array2>)  # Return the truth value of (x1 >= x2) element-wise
+    np.less (<array1>, <array2>)  # Return the truth value of (x1 < x2) element-wise
+    np.less_equal (<array1>, <array2>)  # Return the truth value of (x1 <= x2) element-wise
+    np.equal (<array1>, <array2>)  # Return (x1 == x2) element-wise
+    np.not_equal (<array1>, <array2>)  # Return (x1 != x2) element-wise
 
+    Note: All of these function return True/False.
+
+
+    "Iterations over 2D array"
+    --------------------------
+        a=np.arange(25)
+        b=a.reshape(5,5)
+        print(b)
+        for i in np.nditer(b,order=‘C’):
+            print(i,"\n")
+
+    "Iterations over 3D array having same height and width"
+    --------------------------------------------------------
+        a=np.arange(75)
+        b=a.reshape(3,5,5)
+        print(b)
+        for i in np.nditer(b,order=‘F’):
+            print(i,"\n")
+
+    "Iterations over 3D array having different height and width"
+    ------------------------------------------------------------
+        a=np.arange(30)
+        b=a.reshape(3,5,2)
+        print(b)
+        for i in np.nditer(b,order=‘C’):
+            print(i,"\n")
+
+Iteration Function: Memory dependent:
+-------------------------------------
+    The iterator function works based on how initially the array is assigned. 
+    Though we perform modification in array, it iterates via first initialization.
+    To overcome this we need to copy the modified array into some variable and use that variable for iteration.
+    e.g:
+        """Iterator memory dependent"""
+        --------------------------------
+        a=np.arange(1,5)
+        b=a.reshape(2,2)
+        print(b)
+        print("without transpose")
+        for i in np.nditer(b):
+            print(i)
+
+        c=b.T 			# Performing transpose
+        print(c)    
+        print("with transpose")
+        for i in np.nditer(c):
+            print(i)
+
+        """To overcome memory dependent"""
+        ---------------------------------
+        d=c.copy()		# copything the memory location of that element
+        print(d)    
+        print("with transpose")
+        for i in np.nditer(d):
+            print(i)
+            
+Array Manipulations:
+--------------------
+     Array manipulation involves following modifications of NumPy array,
+        Changing Shape
+        Changing Dimension
+        Transpose Operation
+        Joining Array
+        Splitting Array
+        Adding/Removing element
+
+    I. Changing Shape:
+    ------------------
+        The shape  of NumPy array are modified using different function such as,
+            <arr>.reshape(dim, row, column)
+            <arr>.shape=(dim, row, column)
+            <arr>.flat[<index>]
+            <arr>.flatten(order)
+            <arr>.ravel()	      	same as flatten()
+        <arr>.flat[<index>]
+        -------------------
+            This function will flatten the n-dimensional numpy array into a single list/array and
+            will return the individual element as mentioned in index.
+
+            Syntax:
+                <arr>.flat[<index>]
+
+             E.g:
+                a=np.arange(12)
+                b=a.reshape(3,2,2)		#3D array
+                print(b)
+                c=b.flat[3]			# return 4th element from flattened array
+                print(c)				# 3
+
+        <arr>.flatten(order):
+        ---------------------
+              This function will flatten the n-dimensional numpy array into a single list/array and 
+              will return complete flatten array as 1D array.
+
+            Syntax
+                <arr>.flatten(order)
+
+             E.g:
+                a=np.arange(12)
+                b=a.reshape(3,2,2)		#3D array
+                print(b)
+                c=b.flatten()			# return 4th element from flattened array
+                print(c)				#  [ 0  1  2  3  4  5  6  7  8  9 10 11]
+ 
 
 
