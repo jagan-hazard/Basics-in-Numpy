@@ -1075,6 +1075,125 @@ Array Manipulations:
             print(len(np.vsplit(a,5)))			# 5
 
 
+  VI. Adding/Removing an element:
+  --------------------------------
+    The below function perform adding/removing elements from numpy array.
+
+		np.resize()
+		np.append()
+		np.insert()
+		np.delete()
+		np.unique()
+
+    np.resize():
+    ------------
+	 This function returns a new array with the specified size.
+
+	 Irrespective of axis, it will just take each element by element and then resize them into array.
+
+	 If the size is bigger than original size, then the repeated  copies (from element index 0 to n) from original array is used.
+
+	 Syntax:
+		np.resize(arr, (<size>))
+	
+	E.g:
+		"""2D array""":
+		----------------
+		a=np.arange(25)	
+		a=a.reshape(5,5)	               # 2D aaray
+		print(a)
+		print("a array shape=",a.shape)        # (5, 5)
+		print(np.resize(a,(3,2)))	       # [[0 1] [2 3] [4 5]]
+		print(np.resize(a,(3,2)).shape)        # (3, 2)
+		print(np.resize(a,(6,6)))	 # [[0,1,2,3,4,5][6,7,8,9,10,11][12,13,14,15,16,17][18,19,20,21,22,23][24,0,1,2,3,4] 
+						 #  [5,6,7,8,9,10]]
+		print(np.resize(a,(6,6)).shape)         # (6,6)
+
+		"""3D array"""
+		---------------
+		a=np.arange(18)	
+		a=a.reshape(2,3,3)
+		print(a)
+		print(np.resize(a,(3,2)))	# [[0 1] [2 3] [4 5]]
+		print(np.resize(a,(3,2)).shape)	# (3, 2)
+
+      np.append():
+      ------------
+           This function returns append the new values at the end of input array based on axis.
+ 	   New value size must be same as Input array. (axis size must be same based on the axis operation).
+  	   Syntax:
+			np.append(arr, values, axis)
+	   e.g:
+		a=np.arange(9)	
+		a=a.reshape(3,3)			# 2D aaray
+		print(a)
+		print("a array shape=",a.shape)		# (5, 5)
+		print(np.append(a,[[3,2,3]],axis=0))		# [[0 1 2]  [3 4 5]  [6 7 8]  [3 2 3]]
+		print(np.append(a,[[3],[2],[3]],axis=1))		# [[0 1 2 3]  [3 4 5 2] [6 7 8 3]]
+
+      np.insert():
+      ------------
+        This function will insert the given element(s) in mentioned index and along the given axis and return it into a new array.
+ 	Syntax
+		np.insert(arr, index, values, axis)
+	 e.g:
+		a=np.arange(9)	
+		a=a.reshape(3,3)			# 2D aaray
+		print(a)
+		print("a array shape=",a.shape)		# (3, 3)
+		print(np.insert(a,1,[3,2,3],axis=0))		# [[0 1 2] [3 2 3] [3 4 5] [6 7 8]]
+		print(np.insert(a,1,[3,2,3],axis=0).shape)	# (4, 3)
+		print(np.insert(a,1,[[3],[2],[3]],axis=0))		# [[0 1 2] [3 3 3] [2 2 2] [3 3 3] [3 4 5] [6 7 8]]
+		print(np.insert(a,1,[[3],[2],[3]],axis=0).shape)	# (6, 3)	
+		print(np.insert(a,1,[3,2,3],axis=1))		# [[0 3 1 2] [3 2 4 5] [6 3 7 8]] 
+		print(np.insert(a,1,[3,2,3],axis=1).shape)	# (3, 4)
+		print(np.insert(a,2,([3],[5],[3]),axis=1))		# [[0 1 3 5 3 2] [3 4 3 5 3 5] [6 7 3 5 3 8]]
+		print(np.insert(a,2,([3],[5],[3]),axis=1).shape)	# (3, 6)
+
+      np.delete():
+      ------------
+        This function will delete the elements (complete row or column) in mentioned index and along the given axis and return
+	it into a new array.
+ 	Syntax
+		np.delete(arr, index, axis)
+ 	e.g:
+		"""2D array"""
+		--------------
+		a=np.arange(9)	
+		a=a.reshape(3,3)
+		print("a array shape=",a.shape)					# (3, 3)
+		print(np.delete(a,1,axis=0))					# [[0 1 2] [6 7 8]]
+		print(np.delete(a,1,axis=0).shape)				# (2, 3)
+		print(np.delete(a,(0,2),axis=0))				# [[3 4 5]]
+		print(np.delete(a,(0,2),axis=0).shape)				# (1, 3)
+		print(np.delete(a,1,axis=1))					# [[0 2] [3 5] [6 8]]
+		print(np.delete(a,1,axis=1).shape)				# (3, 2)
+		print(np.delete(a,(0,2),axis=1))				# [[1] [4] [7]]
+		print(np.delete(a,(0,2),axis=1).shape)				# (3, 1)
+
+      np.unique():
+      -----------
+        This function will return a python array of unique elements in the given input array.
+	The function work in same way irrespective of input array dimension.
+	It also return a array for 
+		Count of the that unique element appears in input array  - if  (return_counts=True).
+		First time occurrence Index of each unique element    	 - if   (return_index=True).
+	 Syntax
+		np.unique(arr, return_index, return_counts)
+	 e.g:
+		a=np.arange(0,36,2)	
+		a=a.reshape(2,3,3)					# 3D aaray
+		print("a array shape=",a.shape)				# (2,3, 3)
+		print(np.unique(a,return_index=True,return_counts=True))	
+					# (array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32,34]), 
+					# array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,17], #dtype=int64),
+					# array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], dtype=int64))
+		print(len(np.unique(a,return_index=True,return_counts=True)))	# 3
+
+      
+
+
+
 
 
 
