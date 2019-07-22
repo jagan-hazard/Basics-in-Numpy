@@ -1230,6 +1230,132 @@ Numpy String Functions:
 	- np.char.join(<join_char>,string/array)
 	- np.char.replace(string,<char_to_replace>,<replace_string>)
 
+Numpy Trignomentry Functions:
+-----------------------------
+    The basic Trignomentric functions such as sin, cos, arcsin,. etc.
+	-  np.sin(<radian value>)
+	-  np.cos(<radian value>)
+	-  np.tan(<radian value>)
+	-  np.arcsin(<radian value>)
+	-  np.arccos(<radian value>)
+	-  np.arctan(<radian value>)
+	-  np.degrees(<radian value>)
+	-  np.deg2rad(<degree value>)      	# (degree*np.pi/180)
+	-  np.rad2deg(<radian value>)
+	-  np.hypot(<side1>,side2)
+	
+    Ex:
+	a=np.array([0,30,45,60,90,180,270])
+	print (np.sin(a*np.pi/180))      				# convert every angle into radian
+	print (np.cos(a*np.pi/180))				# convert every angle into radian
+	print (np.tan(a*np.pi/180))				# convert every angle into radian
+
+	deg=np.array([[0,30,45,60,90,180,270]])
+	for i in deg:
+		print("manual_Cal=",(i*np.pi/180))   		# manual convertion from deg to rad
+		print("function value=",np.deg2rad(i))		# function to convert deg to rad
+		print("back to degree",np.rad2deg(np.deg2rad(i))) 	 # function to convert rad to deg
+
+	print("hypotenuse value =",np.hypot(10,20))	    # to calculate hypotenuse given two side
+
+  Numpy Hyperbolic Functions:
+  ---------------------------
+     The hyperbolic functions such as sinh, cosh, arcsinh,. etc.
+	-  np.sinh(<radian value>)
+	-  np.cosh(<radian value>)
+	-  np.tanh(<radian value>)
+	-  np.arcsinh(<radian value>)
+	-  np.arccosh(<radian value>)
+	-  np.arctanh(<radian value>)
+		
+    Ex:
+	a=np.array([0,30,45,60,90,180,270])
+	print (np.sinh(a*np.pi/180))     	        # convert every angle into radian
+	print (np.cosh(a*np.pi/180))			# convert every angle into radian
+	print (np.tanh(a*np.pi/180))			# convert every angle into radian
+	
+Numpy Rounding off Functions:
+-----------------------------
+ The Round off functions available in numpy are,
+	-  np.around(<values/array>,precision)
+	-  np.round_(<values/array>,precision)
+	-  np.rint(<values/array>)
+	-  np.ceil(<values/array>)
+	-  np.floor(<values/array>)
+	-  np.trunc(<values/array>)
+	-  np.fix(<values/array>)
+
+Note: np.around/np.round_/np.rint are similar.
+
+    np.around():
+    ------------
+       Evenly round the given values.
+            If value <=0.5, then round  it to 0 
+            If value >0.5, then round  it to 1
+
+       Syntax :
+ 		np.around(<value/array>,precision)
+
+       Ex:
+		values=np.array([1.23,1.87,0.0073482,10.50,-5.76])
+		print(np.around(values))       # [ 1.  2.  0. 10. -6.]
+		print(np.around(values,2))     # [ 1.23  1.87  0.01 10.5  -5.76]
+
+    np.ceil():
+    ----------
+       Ceil will round to next integer.
+
+       Syntax :
+ 		np.around(<value/array>)
+
+       Ex:
+		values=np.array([1.23,1.87,0.0073482,10.50,-5.76])
+		print(np.ceil(values))   	# [ 2.  2.  1. 11. -5.]
+
+    np.floor():
+    -----------
+       Floor will round to previous integer.
+
+       Syntax :
+ 		np.floor(<value/array>)
+       Ex:
+		values=np.array([1.23,1.87,0.0073482,10.50,-5.76])
+		print(np.floor(values))  # [ 1.  1.  0. 10. -6.]
+    np.trunc():
+    -----------
+	trunc will truncate the floating values(kind of convert float into integer).
+
+        Syntax :
+ 		np.trunc(<value/array>)
+	
+        Ex:
+		print(np.trunc(values))   		 [ 1.  1.  0. 10. -5.]
+    
+    np.rint():
+    -----------
+       rint will round  elements of the array to the nearest integer.
+
+       Syntax :
+ 		np.rint(<value/array>)
+
+       Ex:
+		print(np.rint(values))   		# [ 1.  2.  0. 10. -6.]
+
+    np.fix():
+    ----------
+
+        fix will round  elements of the array to nearest integer towards zero.
+
+	Syntax :
+ 		np.rint(<value/array>)
+
+        Ex:
+		print(np.rint(values))   		# [ 1.  1.  0. 10. -5.]
+
+
+
+	
+	
 
 
 
