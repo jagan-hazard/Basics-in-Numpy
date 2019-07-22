@@ -1621,24 +1621,23 @@ Numpy Linear Algebra functions:
     np.dot():
     ---------
      This function will perform dot product of two array.
-For 0D, it is same as matrix multiplication (np.matmul)
-For 1D arrays, it is inner product of vectors
-For 2D arrays, it is matrix multiplication
+	For 0D, it is same as matrix multiplication (np.matmul)
+	For 1D arrays, it is inner product of vectors
+	For 2D arrays, it is matrix multiplication
+      Syntax:
+		np.dot(<value1/array1>, <value2/array2>)
+      Ex:
+		arr1=np.array([1,1,1])
+		arr2=np.array([2,2,2])
+		print(np.dot(arr1,arr2))	# 6 
 
-Syntax:
-	np.dot(<value1/array1>, <value2/array2>)
-Ex:
-arr1=np.array([1,1,1])
-arr2=np.array([2,2,2])
-print(np.dot(arr1,arr2))	# 6 
+		arr1=np.ones((3,3)) 	# [[1. 1. 1.]  [1. 1. 1.] [1. 1. 1.]]
+		arr2=np.full((3,3),2)	# [[2 2 2]  [2 2 2]  [2 2 2]]
+		print(np.dot(arr1,arr2)) # [[6. 6. 6.]  [6. 6. 6.] [6. 6. 6.]]  just a matrix mul since 2D array
 
-arr1=np.ones((3,3)) 	# [[1. 1. 1.]  [1. 1. 1.] [1. 1. 1.]]
-arr2=np.full((3,3),2)	# [[2 2 2]  [2 2 2]  [2 2 2]]
-print(np.dot(arr1,arr2)) # [[6. 6. 6.]  [6. 6. 6.] [6. 6. 6.]]  just a matrix mul since 2D array
-
-arr1=np.ones((3,3,3)) 	# [[1. 1. 1.]  [1. 1. 1.] [1. 1. 1.]]
-arr2=np.full((3,3,3),2)	# [[2 2 2]  [2 2 2]  [2 2 2]]
-print(np.dot(arr1,arr2).shape) #  it will create array of (3, 3, 3, 3) 
+		arr1=np.ones((3,3,3)) 	# [[1. 1. 1.]  [1. 1. 1.] [1. 1. 1.]]
+		arr2=np.full((3,3,3),2)	# [[2 2 2]  [2 2 2]  [2 2 2]]
+		print(np.dot(arr1,arr2).shape) #  it will create array of (3, 3, 3, 3) 
 
     np.vdot()
     ---------
