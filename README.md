@@ -1193,23 +1193,25 @@ Array Manipulations:
       
 Bitwise Operators:
 -------------------
-  NumPy has the following bitwise operators which perform bitwise operations.
-	- np.bitwise_and(arr1/ele1,arr2/ele2,..,arr_n/ele_n)
-	- np.bitwise_or(arr1/ele1,arr2/ele2,..,arr_n/ele_n)
-	- np.invert(array1/element)
-	- np.left_shift (array1/element)
-	- np.right_shift (array1/element)
-  All the inputs must be in same dimension.
-The operations are performed at bitwise and their equivalent decimal number is returned.
-e.g:
-"""bitwise_and"""
-a=np.arange(4)								
-a=a.reshape(2,2)				# 2D aaray
-print(a)					# [[0 1] [2 3]]
-b=np.arange(0,8,2)	
-b=b.reshape(2,2)				# 2D aaray
-print(b)					# [[0 2] [4 6]]
-print(np.bitwise_and(a,b))			# [[0 0] [0 2]]
+
+    NumPy has the following bitwise operators which perform bitwise operations.
+		- np.bitwise_and(arr1/ele1,arr2/ele2,..,arr_n/ele_n)
+		- np.bitwise_or(arr1/ele1,arr2/ele2,..,arr_n/ele_n)
+		- np.invert(array1/element)
+		- np.left_shift (array1/element)
+		- np.right_shift (array1/element)
+    All the inputs must be in same dimension.
+    The operations are performed at bitwise and their equivalent decimal number is returned.
+    e.g:
+	"""bitwise_and"""
+	-----------------
+	a=np.arange(4)								
+	a=a.reshape(2,2)				# 2D aaray
+	print(a)					# [[0 1] [2 3]]
+	b=np.arange(0,8,2)	
+	b=b.reshape(2,2)				# 2D aaray
+	print(b)					# [[0 2] [4 6]]
+	print(np.bitwise_and(a,b))			# [[0 0] [0 2]]
 
 
 
