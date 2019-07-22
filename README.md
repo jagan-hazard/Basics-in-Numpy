@@ -1494,6 +1494,90 @@ Numpy Arithmetic Functions:
 		print(np.power(arr1[1],arr2[1]))	# 4
 		print(np.power(arr1,arr2))		# [ 1  4  9 16]
 
+Other miscellaneous functions:
+-----------------------------
+	-  np.clip(<array>,<min_value>,<max_val>)
+	-  np.square(<value/array>)
+	-  np.sqrt(<value/array>)
+	-  np.absolute(<value/array>)
+	-  np.sign(<value/array>)
+	-  np.maximum(<value/array>)
+	-  np.minimum(<value/array>)
+	-  np.fmax(<value/array>)	# Same as maximum(), except it ignores NaNs
+	-  np.fmin (<value/array>)	# Same as minimum(), except it ignores NaNs
+	-  np.nan_to_num(<value/array>)     # convert NaNs into zero
+	
+    np.clip():
+    ----------
+     This will clip the input array as per min, max value.
+     Syntax:
+		np.clip(<array>,<min_value>,<max_val>)
+     Ex:
+		arr=[-1,-5,0,1,5,9]
+		print(np.clip(arr,-1,1))		#[-1 -1  0  1  1  1]
+
+    np.square():
+    ------------
+     This will return elementwise square value.
+     Syntax:
+		np.square(<value/array>)
+     Ex:
+		arr=[-1,-5,0,1,5,9]
+		print(np.square(arr[4]))		# 25
+		print(np.square(arr))			# [ 1 25  0  1 25 81]
+    
+    np.sqrt():
+    ----------
+     This will return elementwise square root value.
+     Syntax:
+		np.sqrt(<value/array>)
+     Ex:
+		arr=[0,1,5,9,25]
+		print(np.sqrt(arr[4]))		# 5.0
+		print(np.sqrt(arr))		# [0.    1.     2.2360    3.         5.   ]
+
+    np.absolute():
+    --------------
+     This will return absolute values for given array/value.
+     Syntax:
+		np.absolute(<value/array>)
+     Ex:
+		arr=[0,-1,5,9,-25]
+		print(np.absolute(arr[4]))		# 25
+		print(np.absolute(arr))		# [ 0  1  5  9 25]
+
+    np.sign():
+    ----------
+     This function returns -1 if x < 0, 0 if x==0, 1 if x > 0. nan is returned for nan inputs. 
+     Syntax:
+		np.sign(<value/array>)
+     Ex:
+		arr=[-5,0,5]
+		print(np.sign(arr))			# [-1  0  1]
+
+    np.maximum():
+    -------------
+     This function will compare two array and returns the maximum by elementwise. 
+     Syntax:
+		np.maximum(<value1/array1>, <value2/array2>)
+     Ex:
+		arr1=np.array([1,2,3])
+		arr2=np.array([2,1,1])
+		print(np.maximum(arr1[1],arr2[1]))		# 2
+		print(np.maximum(arr1,arr2))			# [2 2 3]
+
+    np.minimum():
+    -------------
+      This function will compare two array and returns the minimum by elementwise. 
+      Syntax:
+		np.minimum(<value1/array1>, <value2/array2>)
+      Ex:
+		arr1=np.array([1,2,3])
+		arr2=np.array([2,1,1])
+		print(np.minimum(arr1[1],arr2[1]))		# 1
+		print(np.minimum(arr1,arr2))			# [1 1 1]
+
+
 
 	
 
