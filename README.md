@@ -1624,9 +1624,9 @@ Numpy Linear Algebra functions:
 	For 0D, it is same as matrix multiplication (np.matmul)
 	For 1D arrays, it is inner product of vectors
 	For 2D arrays, it is matrix multiplication
-      Syntax:
+     Syntax:
 		np.dot(<value1/array1>, <value2/array2>)
-      Ex:
+     Ex:
 		arr1=np.array([1,1,1])
 		arr2=np.array([2,2,2])
 		print(np.dot(arr1,arr2))	# 6 
@@ -1682,6 +1682,35 @@ Numpy Linear Algebra functions:
 		arr1=np.ones((3,3,3)) 	# [[1. 1. 1.]  [1. 1. 1.] [1. 1. 1.]]
 		arr2=np.full((3,3,3),2)	# [[2 2 2]  [2 2 2]  [2 2 2]]
 		print(np.matmul(arr1,arr2).shape) #  it will produce (3, 3, 3) matrix
+
+
+Array Padding in Numpy:
+-----------------------
+    This function will pad any numpy array as per the given pad width.
+    This function pad based on before and after pad width which means before/after the main array how many row we need to pad.
+    Mode represent what value is used for padding.
+    Syntax:
+    	np.pad(<arr>, (< before_pad_width >,<after_pad_width>), mode, constant_value=1, <function>)
+    Ex:
+	arr1=np.array([1,2,3])
+	print(np.pad(arr1,(3,3),mode='constant',constant_values=1))	# [1 1 1 1 2 3 1 1 1]
+	print(np.pad(arr1,(1,2),mode='constant'))			# [0 1 2 3 0 0]
+	print(np.pad(arr1,(1,2),mode='edge'))				# [1 1 2 3 3 3]
+
+Padding In Image pixels:
+------------------------
+	def pad_with(vector, pad_width, iaxis, kwargs):
+	    pad_value = kwargs.get('padder', 10)
+	    vector[:pad_width[0]] = pad_value
+	    vector[-pad_width[1]:] = pad_value
+	    return vector
+	a = np.arange(6)
+	a = a.reshape((2, 3))
+	print(np.pad(a, (1,2), pad_with))	# [[10 10 10 10 10 10]
+						#  [10  0  1  2 10 10]
+						#  [10  3  4  5 10 10]
+						#  [10 10 10 10 10 10]
+						#  [10 10 10 10 10 10]]
 
 	
 
