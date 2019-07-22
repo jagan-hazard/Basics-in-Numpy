@@ -1213,6 +1213,24 @@ Bitwise Operators:
 	print(b)					# [[0 2] [4 6]]
 	print(np.bitwise_and(a,b))			# [[0 0] [0 2]]
 
+Numpy String Functions:
+----------------------
+
+    For Most of the ML task we won’t use NumPy arrays having string datatypes. There are many functions available to manipulate strings such as,
+	- np.char.add(str1,str2)
+	- np.char.multiply(str1,<integer>)
+	- np.char.center(str1,width,fillchar)
+	- np.char.capitalize(str1)
+	- np.char.title(str1)
+	- np.char.lower(str1)
+	- np.char.upper(str1)
+	- np.char.split(str1,sep=‘-’)
+	- np.char.splitlines(str1)
+	- np.char.strip(str1,<charecter_on_which_strip_occurs>)
+	- np.char.join(<join_char>,string/array)
+	- np.char.replace(string,<char_to_replace>,<replace_string>)
+
+
 
 
 
