@@ -1577,7 +1577,112 @@ Other miscellaneous functions:
 		print(np.minimum(arr1[1],arr2[1]))		# 1
 		print(np.minimum(arr1,arr2))			# [1 1 1]
 
+Numpy Statistical ordering functions:
+-------------------------------------
+	-  np.amax(<array>,<axis>)
+	-  np.amin(<array>,<axis>)
+	-  np.nanmax(<array>,<axis>)	# same as amax (), except it ignores NaNs
+	-  np.nanmin(<array>,<axis>)    # same as amin(), except it ignores NaNs
+	-  np.ptp(<array>,<axis>)
 
+    np.amax ():
+    -----------
+     This function will compare elements in given array  along the given axis returns maximum. 
+     Syntax:
+		np.amax(<value/array>, <axis>)
+     Ex:
+		arr1=np.array([1,4,7,2,5,8,3,6,9])
+		arr1.shape=(3,3)			# [[1 4 7] [2 5 8] [3 6 9]]
+		print(np.amax(arr1,axis=0))		# [3 6 9]
+		print(np.amax(arr1,axis=1))		# [7 8 9]
+
+    np.amin ():
+    -----------
+     This function will compare elements in given array  along the given axis returns minimum. 
+     Syntax:
+		np.amin(<value/array>, <axis>)
+     Ex:
+		arr1=np.array([1,4,7,2,5,8,3,6,9])
+		arr1.shape=(3,3)			# [[1 4 7] [2 5 8] [3 6 9]]
+		print(np.amin(arr1,axis=0))		# [1 4 7]
+		print(np.amin(arr1,axis=1))		# [1 2 3]
+
+Numpy Linear Algebra functions:
+-------------------------------
+	-  np.dot(<element/array>)  # perform dot product
+	-  np.vdot(<element/array>)  # perform dot product by flattening
+	-  np.matmul(<array1>, <array2>) # perform matrix multiplication
+	-  np.linalg.eigvals(<array>) # Compute the eigenvalues of a general matrix
+	-  np.linalg.eig(<array>)  # Compute the eigenvalues and right eigenvectors of a square array
+	-  np.linalg.det(<array>)  # Compute the determinant of an array
+	-  np.linalg.matrix_rank(<array>)  # Return matrix rank of array using SVD method
+	-  np.linalg.inv(<array>)  # Compute the (multiplicative) inverse of a matrix
+
+    np.dot():
+    ---------
+     This function will perform dot product of two array.
+For 0D, it is same as matrix multiplication (np.matmul)
+For 1D arrays, it is inner product of vectors
+For 2D arrays, it is matrix multiplication
+
+Syntax:
+	np.dot(<value1/array1>, <value2/array2>)
+Ex:
+arr1=np.array([1,1,1])
+arr2=np.array([2,2,2])
+print(np.dot(arr1,arr2))	# 6 
+
+arr1=np.ones((3,3)) 	# [[1. 1. 1.]  [1. 1. 1.] [1. 1. 1.]]
+arr2=np.full((3,3),2)	# [[2 2 2]  [2 2 2]  [2 2 2]]
+print(np.dot(arr1,arr2)) # [[6. 6. 6.]  [6. 6. 6.] [6. 6. 6.]]  just a matrix mul since 2D array
+
+arr1=np.ones((3,3,3)) 	# [[1. 1. 1.]  [1. 1. 1.] [1. 1. 1.]]
+arr2=np.full((3,3,3),2)	# [[2 2 2]  [2 2 2]  [2 2 2]]
+print(np.dot(arr1,arr2).shape) #  it will create array of (3, 3, 3, 3) 
+
+    np.vdot()
+    ---------
+     This function will perform dot product of array of any dimension by flattening them(literally doing 1D multiplication).
+     Note: It is ideal for convolution operation
+     Syntax:
+		np.vdot(<value1/array1>, <value2/array2>)
+     Ex:
+		arr1=np.array([1,1,1])
+		arr2=np.array([2,2,2])
+		print(np.vdot(arr1,arr2))	# 6.0 
+
+		arr1=np.ones((3,3)) 	# [[1. 1. 1.]  [1. 1. 1.] [1. 1. 1.]]
+		arr2=np.full((3,3),2)	# [[2 2 2]  [2 2 2]  [2 2 2]]
+		print(np.vdot(arr1,arr2)) # 18.0
+
+		arr1=np.ones((3,3,3)) 	# [[1. 1. 1.]  [1. 1. 1.] [1. 1. 1.]]
+		arr2=np.full((3,3,3),2)	# [[2 2 2]  [2 2 2]  [2 2 2]]
+		print(np.vdot(arr1,arr2)) #  54.0
+
+    np.matmul():
+    ------------
+     This function will perform matrix multiplication of two array.
+              For 1D, it is same as dot multiplication (np.dot)
+              For 2D/nD arrays, it is proper matrix multiplication
+     Syntax:
+		np.matmul(<value1/array1>, <value2/array2>)
+     Ex:
+		arr1=np.array([1,1,1])
+		arr2=np.array([2,2,2])
+		print(np.matmul(arr1,arr2))	# 6.0  
+
+		arr1=np.ones((3,3)) 	# [[1. 1. 1.]  [1. 1. 1.] [1. 1. 1.]]
+		arr2=np.full((3,3),2)	# [[2 2 2]  [2 2 2]  [2 2 2]]
+		print(np.matmul(arr1,arr2).shape) # it will produce (3, 3) matrix
+
+		arr1=np.ones((3,3)) 	# [[1. 1. 1.]  [1. 1. 1.] [1. 1. 1.]]
+		arr2=np.full((3),2)		# [[2 2 2]  [2 2 2]  [2 2 2]]
+		print(arr2)				# [2 2 2]
+		print(np.matmul(arr1,arr2)) # [6. 6. 6.
+
+		arr1=np.ones((3,3,3)) 	# [[1. 1. 1.]  [1. 1. 1.] [1. 1. 1.]]
+		arr2=np.full((3,3,3),2)	# [[2 2 2]  [2 2 2]  [2 2 2]]
+		print(np.matmul(arr1,arr2).shape) #  it will produce (3, 3, 3) matrix
 
 	
 
