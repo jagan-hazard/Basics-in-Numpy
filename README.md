@@ -1713,9 +1713,48 @@ Padding In Image pixels:
 						#  [10 10 10 10 10 10]]
 
 	
+Numpy Random function functions:
+--------------------------------
 
+	-  np.random.rand(<shape>)  # Random values(0 to 1) in a given shape
+	-  np.random.randint(<low>,<high>,<shape>) # Random values in a given shape
+	-  np.random.random_integers(<low>,<high>,<shape>) # perform matrix multiplication
+	-  np.random.permutations(<array>) # Compute the eigenvalues of a general matrix
 
+    np.random.rand():
+    -----------------
+     This function will output the random number as per given n-dimension.
+     Random numbers are from uniform distribution (0 to 1).
+     Syntax:
+    		np.random.rand (<width>,<height>)
+     Ex:
+		print(np.random.rand(3))	# 1D
+		print(np.random.rand(3,3))	# 2D
+		print(np.random.rand(4,2,2))	# 3D
+		print(np.random.rand(2,4,2,2))	# 4D
 
+    np.random.randint():
+    --------------------
+     This function will output the random number as per given n-dimension.
+     Random numbers are in between on low(inclusive) and high(exclusive) value.
+     Syntax:
+    		np.random.randint (<low>,<high>,<shape>)
+
+     Ex:
+		print(np.random.randint(0,2,10))	# [1 0 1 1 0 1 0 0 0 1]
+		print(np.random.randint(-1,2,(3,3)))	# [[ 1  1 -1] [-1  1 -1] [-1  0 -1]]
+		print(np.random.randint(0,11,(2,2,2)))	# [[[ 8  6] [ 5 10]] [[ 9  2] [ 2  9]]]
+
+    np.random_integers():
+    ---------------------
+    This function will output the random number as per given n-dimension.
+    Random numbers are in between on low(inclusive) and high(inclusive) value.
+    Syntax:
+    		np.random.random_randint (<low>,<high>,<shape>)
+    Ex:
+		print(np.random.random_integers(0,2,10))	# [2 1 1 2 1 0 1 1 0 1]
+		print(np.random.random_integers(-1,2,(3,3)))	# [[ 2  0  0] [-1  0 -1] [ 1 -1  0]]
+		print(np.random.random_integers(0,11,(2,2,2)))	# [[[ 9  7] [ 9 10]] [[ 6  5] [11 10]]]
 
 
 
