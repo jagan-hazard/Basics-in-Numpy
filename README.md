@@ -1398,7 +1398,103 @@ Numpy sums,products,difference Functions:
 		print(np.diff(arr,axis=1))  # [[1 1] [1 1] [1 1]] (return along axis 1, which is row)
 
 
+Exponents and Logarthms Functions:
+----------------------------------
+   These functions available in numpy are,
+	-  np.exp(<value/array>)
+	-  np.expm1(<value/array>)   # exponent value - 1
+	-  np.log(<array>,axis)
+	....
+	....
 	
+    Ex:
+	val=np.array([-1,0,1,5,8.5])
+	print(np.exp(val))	# [   0.36787944    1.            2.71828183  148.4131591  4914.7688403 ]
+	print(np.expm1(val))	# [  -0.63212056    0.            1.71828183  147.4131591  4913.7688403 ]
+	val=np.array([1,5,8.5])
+	print(np.log(val))	# [0.         1.60943791 2.14006616]
+
+Numpy Arithmetic Functions:
+---------------------------
+ These functions available in numpy are,
+	-  np.add(<value1/array1>, <value2/array2>)
+	-  np.subtract(<value1/array1>, <value2/array2>)
+	-  np.multiply(<value1/array1>, <value2/array2>)
+	-  np.divide(<value1/array1>, <value2/array2>)
+	-  np.reminder(<divident>, <divisor>)
+	-  np.floor_divide(<numerator>, <denominator>)
+	-  np.mod(<divident>, <divisor>) 
+	-  np.divmod(<divident>, <divisor>) 	
+	-  np.power(<element/array>, <power/array>) 	
+
+    np.add()  [similar for subtract,multiply,divide]:
+    -------------------------------------------------
+        This will add given two element or array.
+	Syntax:
+		np.add(<value1/array1>, <value2/array2>)
+	Ex:
+		arr1=np.array([1,1,1,1])
+		arr2=np.array([2,2,2,2])
+		print(np.add(arr1[1],arr2[1]))		# 3
+		print(np.add(arr1,arr2))		# [3 3 3 3]
+
+    np.reminder():
+    ---------------
+     This will return the reminder.
+     Syntax:
+		np.reminder(<divident>, <divisor>)
+     Ex:
+		arr1=np.array([1,2,3,4])
+		arr2=np.array([2,2,2,2])
+		print(np.remainder(arr1[1],arr2[1]))	# 0
+		print(np.remainder(arr1,arr2))		# [1 0 1 0]
+
+    np.floor_divide():
+    ------------------
+     This will return the quotient.
+     Syntax:
+		np. floor_divide(<numerator>, <denominator>)
+     Ex:
+		arr1=np.array([1,2,3,4])
+		arr2=np.array([2,2,2,2])
+		print(np.floor_divide(arr1[1],arr2[1]))		# 1
+		print(np.floor_divide(arr1,arr2))		# [0 1 1 2]
+
+    np.mod():
+    ---------
+     This will return remainder.
+
+     Syntax:
+		np.mod(<divident>, <divisor>)
+     Ex:
+		arr1=np.array([1,2,3,4])
+		arr2=np.array([2,2,2,2])
+		print(np.mod(arr1[1],arr2[1]))			# 0
+		print(np.mod(arr1,arr2))			# [1 0 1 0]
+
+    np.divmod():
+    ------------
+     This will return the two array of quotient and remainder.
+     Syntax:
+		np. divmod(<divident>, <divisor>)
+     Ex:
+		arr1=np.array([1,2,3,4])
+		arr2=np.array([2,2,2,2])
+		print(np.divmod(arr1[1],arr2[1]))	# (1, 0)
+		print(np.divmod(arr1,arr2))		# (array([0, 1, 1, 2]), array([1, 0, 1, 0]))
+
+    np.power():
+    -----------
+     This will return the output of element raised to given power.
+     Syntax:
+		np.power(<element/array>, <power/array>) 
+     Ex:
+		arr1=np.array([1,2,3,4])
+		arr2=np.array([2,2,2,2])
+		print(np.power(arr1[1],arr2[1]))	# 4
+		print(np.power(arr1,arr2))		# [ 1  4  9 16]
+
+
 	
 
 
