@@ -11,6 +11,7 @@ What is Numpy?:
       - Mathematical and logical operations on arrays
       - Operations related to linear algebra.
       - Random number generations (1D and nD array ) 
+      - and much more ...
 
 Defining an array: (ndarray):
 -----------------------------
