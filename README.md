@@ -1352,6 +1352,50 @@ Note: np.around/np.round_/np.rint are similar.
         Ex:
 		print(np.rint(values))   		# [ 1.  1.  0. 10. -5.]
 
+Numpy sums,products,difference Functions:
+-----------------------------------------
+    These functions available in numpy are,
+	-  np.sum(<array>,axis)
+	-  np.prod(<array>,axis)
+	-  np.diff(<array>,axis)
+	-  np.gradient(<array>,axis)
+	
+
+    np.sum():
+    --------
+       Sum of array elements over a given axis.
+       Syntax :
+ 		np.sum(<array>,<axis>)
+       Ex:
+		arr=np.array([1,2,3,1,2,3,1,2,3])
+		arr.shape=(3,3)    		# [[1,2,3][1,2,3][1,2,3]] --> 2D array
+		print(np.sum(arr))		# 18 (return sum across all axis)
+		print(np.sum(arr,axis=0))	# [3 6 9] (return along axis 0)
+		print(np.sum(arr,axis=1))	# [3 6 9] (return along axis 1)
+
+    np.prod():
+    ----------
+       product of array elements over a given axis.
+       Syntax :
+ 		np.prod(<array>,<axis>)
+       Ex:
+		arr=np.array([1,2,3,1,2,3,1,2,3])
+		arr.shape=(3,3)    		 # [[1,2,3][1,2,3][1,2,3]] --> 2D array
+		print(np.prod(arr))	 # 216 (return prod across all axis)
+		print(np.prod(arr,axis=0))	   # [ 1  8 27] (return along axis 0, which is column)
+		print(np.prod(arr,axis=1))	   # [6 6 6] (return along axis 1, which is row)
+
+    np.diff():
+    ----------
+       diff of array each elements over a given axis.
+       Syntax :
+ 		np.diff(<array>,<axis>)
+       Ex:
+		arr=np.array([1,2,3,1,2,3,1,2,3])
+		arr.shape=(3,3)    	    # [[1,2,3][1,2,3][1,2,3]] --> 2D array
+		print(np.diff(arr))	    # [[1 1] [1 1] [1 1]] by default axis 1
+		print(np.diff(arr,axis=0))  # [[0 0 0] [0 0 0]] (return along axis 0, which is column)
+		print(np.diff(arr,axis=1))  # [[1 1] [1 1] [1 1]] (return along axis 1, which is row)
 
 
 	
