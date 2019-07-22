@@ -1757,6 +1757,90 @@ Numpy Random function functions:
 		print(np.random.random_integers(0,11,(2,2,2)))	# [[[ 9  7] [ 9 10]] [[ 6  5] [11 10]]]
 
 
+Base-n representations:
+-----------------------
+    There are two functions available for number systems. They are,
+	-  np.binary_repr(<number>,<width>)
+	-  np.base_repr(<number>,<base>,<padding>)
+
+    np.binary_repr():
+    -----------------
+     This function will output binary equivalent of given integer as string.
+     Syntax:
+   		 np.binary_repr(<value>,<width>)
+     Ex:
+		print(np.binary_repr(-5))		# -101
+		print(np.binary_repr(0))		# 0
+		print(np.binary_repr(10,width=6))	# 001010
+
+    np.base_repr():
+    ---------------
+     This function will output base equivalent of given integer as string.
+     Base number range is 2-36.(default value=2).
+     Number of zeros padded on the left. Default is 0 (no padding).
+     Number should always be in integer (base 10).
+     Syntax:
+		    np.base_repr(<number>,<base>,<padding>)
+     Ex:
+		print(np.base_repr(-5))				# -101
+		print(np.base_repr(0))				# 0
+		print(np.base_repr(9,base=8,padding=4))		# 000012
+		print(np.base_repr(33,base=10,padding=4))	# 000012
+		print(np.base_repr(16,base=16,padding=4))	# 000010
+
+Binary Operations in Numpy:
+---------------------------
+    -  np.bitwise_and(<int1/arr1>, <int2/arr2>)    		   # bitwise AND op
+    -  np.bitwise_or(<int1/arr1>, <int2/arr2>) 			   # bitwise OR op
+    -  np.bitwise_xor(<integer1>, <integer2>) 			    # bitwise XOR op
+    - np.invert (<int/arr>) 					    # invert the bits
+    -  np.left_shift(<int/arr>,<digits_to_shift>) 		    # left shift op
+    -  np.right_shift(<int/arr>,<digits_to_shift>) 		    # right shift op
+    
+    Ex:
+	a=[10,5]
+	b=[10,6]
+	print(np.bitwise_and(a,b))	# [10  4]
+	print(np.bitwise_or(a,b))		# [10  7]
+	print(np.bitwise_xor(a,b))		# [0 3]
+	print(np.invert(a))			# [-11  -6]
+	print(np.left_shift(a,2))		# [40 20]
+	print(np.right_shift(a,2))		# [2 1]
+
+Input and Output Operations in Numpy:
+-------------------------------------
+   Numpy Binary Files Ops:
+   ----------------------
+
+    -  np.load(‘test.npy’,<mode>)    		   	# load numpy array from npy file
+    -  np.save(‘test_save.npy’,<array>) 		   # save numpy array into npy file
+    -  np.savez(‘test_save.npy’,<arr1>,<arr2>,..<arr-n>) # save several numpy array into uncompressed npy file
+    -  np.savez_compressed(‘test_save.npy’,<arr1>, <arr-n>) # save several numpy array into compressed npy file
+
+    Note: more on “https://docs.scipy.org/doc/numpy/reference/routines.io.html#binary-format-description”
+
+   Numpy Text Files Ops: ( also handles csv file):
+   -----------------------------------------------
+
+    -  np.loadtext()    		# load data array from txt file
+    -  np.savetxt() 		# save an array to txt file
+    -  np.genfromtext() 		# Load data from a text file, with missing values handled as specified
+    -  np.fromregex() 		# Construct an array from a text file, using regular expression parsing
+    -  np.fromstring()  		# A new 1-D array initialized from text data in a string
+
+
+    Note: more on “https://docs.scipy.org/doc/numpy/reference/routines.io.html#binary-format-description”
+
+
+
+
+
+
+
+
+
+
+
 
 
 
