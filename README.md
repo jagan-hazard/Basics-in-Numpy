@@ -5,7 +5,7 @@ What is Numpy?:
 
     NumPy – Numerical Python.
     It is a library consisting of multi-dimensional array objects and a vast number of functions for 
-    processing those multi-dimensional arrays.
+    processing those multi-dimensional arrays (called tensor).
     It is a Open Source!.
     It performs
       - Mathematical and logical operations on arrays
