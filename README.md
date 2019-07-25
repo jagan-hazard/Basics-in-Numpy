@@ -62,8 +62,8 @@ Reshaping an array:
 -----------------------------------
 
     Reshaping an array can be done in two ways.
-            i) <arr>.shape=(dim,row,column)
-            ii) <arr>.reshape(dim,row,column)
+            i) <arr>.shape=(dim,row,column),
+            ii) <arr>.reshape(dim,row,column),
             iii) ndmin parameter for dimensions
 
 Reshaping an array using <arr>.shape
@@ -93,11 +93,9 @@ Reshaping an array using <arr>.shape
 Reshaping an array using <arr>.reshape()
 ------------------------------------------
 
-    This function will return the reshaped array as new array.
-    
+    This function will return the reshaped array as new array. 
     Syntax:
-        <arr>.reshape(dimension, row, column)
-        
+        	<arr>.reshape(dimension, row, column)
     e.g:
         a=np.array([1,2,3,4,5,6,7,8,9])
         b=a.reshape(3,3)
@@ -114,7 +112,6 @@ Reshaping an array using <arr>.reshape()
         
 Some numpy functions:
 ----------------------
-
     NumPy has some useful function to generate the n dimensional arrays. They are,
         - numpy.zeros()
         - numpy.ones()
@@ -126,10 +123,8 @@ zeros():
 -------
 
     For the given  dimension, this function will  generate the given dimensional array which filled with zeros.
-    
     Syntax:
-        numpy.zeros((dimension, row, column))
-        
+        numpy.zeros((dimension, row, column))   
     e.g:
         a=np.zeros((2,2)) 		 #2D array
         print(a)
@@ -147,7 +142,6 @@ ones():
 --------
 
     For the given  dimension, this function will  generate the given dimensional array which filled with ones.
-    
     Syntax:
         numpy.ones((dimension, row, column))
         
